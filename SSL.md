@@ -43,5 +43,8 @@ https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl
 
     sudo ufw allow 'Nginx Full'
     sudo ufw delete allow 'Nginx HTTP'
+    
+- `sudo ufw status`
+- Kalo misalnya status inactive `sudo ufw enable`
 - `sudo nginx -t`
 - `sudo systemctl restart nginx`
