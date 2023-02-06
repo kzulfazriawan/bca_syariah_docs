@@ -5,7 +5,8 @@ https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl
 - `sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096`
 - `sudo nano /etc/nginx/snippets/self-signed.conf`
 - Isi dengan line sebagai berikut
-- 
+
+
     ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
     ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
 
