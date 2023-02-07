@@ -1,7 +1,7 @@
 
 # Guide Manual Instalasi Ubuntu x Nginx BSIT2023
 
-## Setup Nginx
+## Setup Nginx with SSL
 - lakukan update OS `sudo apt update`, (opsional: Jalankan upgrade `sudo apt upgrade`)
 - Instal nginx `sudo apt install nginx`
 - Instal SSL module `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt`
@@ -57,5 +57,23 @@
 - Dan jalankan command berikut untuk melakukan generate certification `sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096`
 - Lalu cek status nginx apabila generate certification telah selesai dengan command berikut `sudo nginx -t`
 - Dan terakhir restart dan reload nginx 
+- `sudo systemctl restart nginx`
+- `sudo systemctl reload nginx`
+
+
+## Instal NJS module Nginx
+- Lakukan install beberapa package berikut `sudo apt install curl gnupg2 ca-certificates lsb-release debian-archive-keyring ubuntu-keyring`
+- Lakukan command tersebut `curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \ | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null`
+- Lakukan update dan install
+- `sudo apt update`
+- `sudo apt install nginx-module-njs`
+- Lakukan command berikut untuk memodifikasi **nginx.conf** `sudo nano /etc/nginx/nginx.conf`
+- Sisipkan kode dibawah ini pada bagian atas file **nginx.conf**
+-
+```nginx
+   load_module modules/ngx_http_js_module.so;
+   load_module modules/ngx_stream_js_module.so;
+```
+- Kemudian restart dan reload service nginx
 - `sudo systemctl restart nginx`
 - `sudo systemctl reload nginx`
