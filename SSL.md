@@ -33,6 +33,7 @@ https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl
 - Tambahkan kode dibawah ini, didalam block kode server pada default, di dalam
 - /etc/nginx/sites-available/default
 - Uncomment line berikut
+-
 
     listen 443 ssl default_server;
     listen [::]:443 ssl delfault_server;
