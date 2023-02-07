@@ -8,10 +8,10 @@
 - Jalankan command berikut untuk melakukan edit file **self-signed.conf** `sudo nano /etc/nginx/snippets/self-signed.conf`
 - Copy dan paste blok kode dibawah
 - 
-
+```nginx
     ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
     ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
-
+```
 - Simpan file
 - Lakukan command berikut untuk melakukan edit file **ssl-params.conf** `sudo nano /etc/nginx/snippets/ssl-params.conf`
 - Kemudian copy and paste blok kode dibawah
@@ -39,15 +39,16 @@
 - Lakukan command berikut untuk melakukan modifikasi pada file **default** `sudo nano /etc/nginx/sites-available/default`
 - Hapus tagar/comment (#) pada blok kode
 - 
-
+```nginx
     listen 443 ssl default_server;
     listen [::]:443 ssl delfault_server;
+```
 - Tambahkan blok kode berikut diatas `root` untuk menyisipkan module **self-signed.conf** dan **ssl-params.conf**
 - 
-
+```nginx
     include snippets/self-signed.conf;
     include snippets/ssl-params.conf;
-
+```
 - Kemudian jalankan kode ini secara berurut untuk melakukan konfigurasi ***firewall***
 - `sudo ufw allow 'Nginx Full'`
 - `sudo ufw delete allow 'Nginx HTTP'`
