@@ -36,6 +36,7 @@ https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl
 
     listen 443 ssl default_server;
     listen [::]:443 ssl delfault_server;
+
 - Sebelum line `root` sisipkan code berikut
 - 
 
