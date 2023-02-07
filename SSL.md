@@ -2,7 +2,6 @@ Source
 https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-20-04-1
 
 - `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt`
-- `sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096`
 - `sudo nano /etc/nginx/snippets/self-signed.conf`
 - Isi dengan line sebagai berikut
 -
@@ -43,8 +42,10 @@ https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl
 
     sudo ufw allow 'Nginx Full'
     sudo ufw delete allow 'Nginx HTTP'
+    sudo ufw allow 'OpenSSH'
     
 - `sudo ufw status`
 - Kalo misalnya status inactive `sudo ufw enable`
 - `sudo nginx -t`
+- `sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096`
 - `sudo systemctl restart nginx`
