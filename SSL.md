@@ -2,14 +2,14 @@ Source
 https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-20-04-1
 
 - `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt`
-- `sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096`
 - `sudo nano /etc/nginx/snippets/self-signed.conf`
 - Isi dengan line sebagai berikut
-- `
-ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
-ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
-`
--`sudo nano /etc/nginx/snippets/ssl-params.conf`
+-
+
+    ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+    ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+
+- `sudo nano /etc/nginx/snippets/ssl-params.conf`
 - 
 
     ssl_protocols TLSv1.3;
@@ -30,7 +30,15 @@ ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
     add_header X-Frame-Options DENY;
     add_header X-Content-Type-Options nosniff;
     add_header X-XSS-Protection "1; mode=block";
-- Tambahkan kode dibawah ini, didalam block kode server pada default.conf
+- Tambahkan kode dibawah ini, didalam block kode server pada default, di dalam
+- /etc/nginx/sites-available/default
+- Uncomment line berikut
+-
+
+    listen 443 ssl default_server;
+    listen [::]:443 ssl delfault_server;
+
+- Sebelum line `root` sisipkan code berikut
 - 
 
     include snippets/self-signed.conf;
@@ -42,5 +50,10 @@ ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
 
     sudo ufw allow 'Nginx Full'
     sudo ufw delete allow 'Nginx HTTP'
+    sudo ufw allow 'OpenSSH'
+    
+- `sudo ufw status`
+- Kalo misalnya status inactive `sudo ufw enable`
 - `sudo nginx -t`
+- `sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096`
 - `sudo systemctl restart nginx`
