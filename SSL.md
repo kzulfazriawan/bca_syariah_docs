@@ -30,7 +30,13 @@ https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl
     add_header X-Frame-Options DENY;
     add_header X-Content-Type-Options nosniff;
     add_header X-XSS-Protection "1; mode=block";
-- Tambahkan kode dibawah ini, didalam block kode server pada default.conf
+- Tambahkan kode dibawah ini, didalam block kode server pada default, di dalam
+- /etc/nginx/sites-available/default
+- Uncomment line berikut
+
+    listen 443 ssl default_server;
+    listen [::]:443 ssl delfault_server;
+- Sebelum line `root` sisipkan code berikut
 - 
 
     include snippets/self-signed.conf;
