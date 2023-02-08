@@ -1,0 +1,43 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.main-view{
+    width: 100%;
+    height: 100%;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+
+  .checkbox {
+    font-weight: 400;
+  }
+
+  .form-floating:focus-within {
+    z-index: 2;
+  }
+
+  input {
+    &.first{
+        margin-bottom: -1px !important;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+    &.last{
+        margin-bottom: 10px !important;
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+    }
+  }
+}
