@@ -1,34 +1,18 @@
-version: '3.2'
+# Use root/example as user/password credentials
+version: '3.1'
+
 services:
-  nginx:
-    image: richarvey/nginx-php-fpm:latest
-    container_name: nginx
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
     restart: always
     ports:
-     - "80:80"
-    volumes:
-     - "./nginx/:/etc/nginx"
-     - "./webroot/:/var/www/html"
-    external_links:
-     - mariadb:mariadb
-     - phpmyadmin:phpmyadmin
-  mariadb:
-    image: mariadb
-    container_name: mariadb
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: your_sql_root_password
-    volumes:
-     - "./mariadb/:/var/lib/mysql"
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpMyAdmin
-    restart: always
-    environment:
-     - "PMA_HOST=mariadb"
-     - "PMA_PORT=3306"
-     - "PMA_ABSOLUTE_URI=https://phpmyadmin.your.domain"
-    external_links:
-     - mariadb:mariadb
-    volumes:
-     - "./phpmyadmin/sessions:/sessions"
+      - 8080:8080
