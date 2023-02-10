@@ -12,10 +12,6 @@ require("angular-sanitize");
 var app = angular.module("App", ["ngRoute", "ngFileUpload", "ngSanitize"]);
 
 app.config(function($interpolateProvider, $routeProvider) {
-    // ____interpolate provider____
-    $interpolateProvider.startSymbol("<%");
-    $interpolateProvider.endSymbol("%>");
-
     let route = $routeProvider;
     route.when(
         "/login/",
@@ -29,7 +25,7 @@ app.config(function($interpolateProvider, $routeProvider) {
         "/",
         {
             templateUrl: "/pages/homepage.html",
-            controller: "Login"
+            controller: "Dashboard"
         }
     );
 });
@@ -39,3 +35,4 @@ app.factory("Http", require("./factories/http"));
 
 // Controllers app
 app.controller("Login" , require("./controllers/login"));
+app.controller("Dashboard" , require("./controllers/dashboard"));

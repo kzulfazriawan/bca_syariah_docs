@@ -1,7 +1,10 @@
 <div class="text-center">
     <main class="form-signin">
-        <form>
+        <form ng-submit="login()">
             <h1 class="h3 mb-3 fw-normal">Sign In</h1>
+
+            <div class="alert alert-danger" role="alert" ng-show="alert.error">{{ alert.error }}</div>
+            <div class="alert alert-success" role="alert" ng-show="alert.success">{{ alert.success }}</div>
     
             <div class="form-floating">
                 <input type="text" class="form-control first" id="floatingInput" placeholder="Username" ng-model="form.username">

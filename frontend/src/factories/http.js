@@ -13,7 +13,7 @@ module.exports = function($http, $window, Upload)
         
         // ____if use authentication token____
         if(typeof data.authentication !== "undefined")
-            param_.headers["Authorization"] = "Token " + data.authentication;
+            param_.headers["Authorization"] = "Bearer " + data.authentication;
 
         // ____if using the data parameter____
         if(typeof data.data !== "undefined")
@@ -77,6 +77,7 @@ module.exports = function($http, $window, Upload)
 
             if (authentication != null)
                 data["authentication"] = authentication;
+            console.log(data);
 
             // ____return the requestHTTP function with parameters____
             return requestHTTP(target, data, "text");

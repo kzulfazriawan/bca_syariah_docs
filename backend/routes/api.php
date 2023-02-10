@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post("/auth/login", [AuthController::class, "login"]);
+Route::middleware("auth:sanctum")->get("/auth/profile", [AuthController::class, "profile"]);
+Route::middleware("auth:sanctum")->get("/ticket", [TicketController::class, "all"]);
+Route::middleware("auth:sanctum")->post("/ticket/create", [TicketController::class, "create"]);
