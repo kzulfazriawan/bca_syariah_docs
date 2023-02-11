@@ -5,14 +5,14 @@
         <div class="card mt-5 mb-5">
             <div class="card-header">
                 <h5>{{ data.name }}</h5>
-            </div>
+                </div>
             <div class="card-body">
                 <h5 class="card-title" ng-show="data.role">Admin</h5>
                 <h5 class="card-title" ng-show="!data.role">User</h5>
                 <p class="card-text">{{ data.username }}</p>
             </div>
         </div>
-        <table class="table table-hover">
+        <table class="table table-hover" ng-init="ticket()">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -22,12 +22,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
+                <tr ng-repeat="item in data.ticket">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.status }}</td>
                     <td>
-                        <a href="#">Reply</a>
+                        <a href="/#!/detail/{{ item.id }}">Detail</a> | 
                         <a href="#">Close</a>
                     </td>
                 </tr>

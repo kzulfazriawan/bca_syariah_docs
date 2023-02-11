@@ -28,6 +28,23 @@ app.config(function($interpolateProvider, $routeProvider) {
             controller: "Dashboard"
         }
     );
+
+    route.when(
+        "/create/",
+        {
+            templateUrl: "/pages/create.html",
+            controller: "Create"
+        }
+    );
+
+    route.when(
+        "/detail/:id",
+        {
+            templateUrl: "/pages/detail.html",
+            controller: "Detail"
+        }
+    );
+
 });
 
 // Factories
@@ -36,3 +53,6 @@ app.factory("Http", require("./factories/http"));
 // Controllers app
 app.controller("Login" , require("./controllers/login"));
 app.controller("Dashboard" , require("./controllers/dashboard"));
+app.controller("Detail" , require("./controllers/detail"));
+app.controller("Create" , require("./controllers/create"));
+

@@ -1,0 +1,33 @@
+<div ng-init="init()">
+    <div ng-include="'/pages/parts/navigation.html'"></div>
+
+    <div class="m-5">
+        <div class="alert alert-danger" role="alert" ng-show="alert.error">{{ alert.error }}</div>
+        <div class="alert alert-success" role="alert" ng-show="alert.success">{{ alert.success }}</div>
+        
+        <div class="card mt-5 mb-5">
+            <div class="card-header">
+                <h5>{{ data.name }}</h5>
+                </div>
+            <div class="card-body">
+                <h5 class="card-title" ng-show="data.role">Admin</h5>
+                <h5 class="card-title" ng-show="!data.role">User</h5>
+                <p class="card-text">{{ data.username }}</p>
+            </div>
+        </div>
+
+        <form class="form-signin" ng-submit="create()">
+            <p class="text-muted">Create new ticket</p>
+            <div class="form-floating">
+                <input type="text" class="form-control first" id="floatingInput" placeholder="Title" ng-model="form.title">
+                <label for="floatingInput">Title</label>
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control last" id="reply" ng-model="form.content" rows="5" style="resize:none"></textarea>
+                <label for="floatingInput">Content</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+
+    </div>
+</div>

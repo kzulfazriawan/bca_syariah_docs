@@ -1,0 +1,53 @@
+<div ng-init="init()">
+    <div ng-include="'/pages/parts/navigation.html'"></div>
+
+    <div class="m-5">
+
+        <div class="alert alert-danger" role="alert" ng-show="alert.error">{{ alert.error }}</div>
+        <div class="alert alert-success" role="alert" ng-show="alert.success">{{ alert.success }}</div>
+
+        <div class="card mt-5 mb-5">
+            <div class="card-header">
+                <h5>{{ data.name }}</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" ng-show="data.role">Admin</h5>
+                <h5 class="card-title" ng-show="!data.role">User</h5>
+                <p class="card-text">{{ data.username }}</p>
+            </div>
+        </div>
+
+        <div class="card mt-5 mb-5" ng-init="ticket()">
+            <div class="card-header">
+                <h5>{{ data.ticket.title }} </h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ data.ticket.status }}</h5>
+                <p class="card-text">{{ data.ticket.content }}</p>
+                <span class="text-muted">{{ data.ticket.created_at }}</span>
+            </div>
+        </div>
+
+        <hr class="mt-1 mb-1"/>
+
+        <div ng-submit="reply()">
+            <form class="form-signin">
+                <p class="text-muted">Reply ticket</p>
+                <div class="form-floating">
+                    <textarea class="form-control" id="reply" ng-model="form.content" rows="5" style="resize:none"></textarea>
+                    <label for="floatingInput">Content</label>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+            </div>
+
+        <hr class="mt-1 mb-1"/>
+
+        <div class="card mt-5 mb-5" ng-repeat="item in data.reply">
+            <div class="card-body">
+                <p class="card-text">{{ item.content }}</p>
+                <span class="text-muted">{{ item.created_at }}</span>
+            </div>
+        </div>
+    </div>
+</div>

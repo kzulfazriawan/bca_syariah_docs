@@ -2,7 +2,6 @@ module.exports = function($http, $window, Upload)
 {
     let requestHTTP = function(target, data, request_type="text")
     {
-        console.log(data);
         // ____this function is serve as http request for the each categories upload, sendGet
         // and even just send. each request has different type of parameters____
         let param_ = {
@@ -26,8 +25,6 @@ module.exports = function($http, $window, Upload)
             } else {
                 param_.headers = data.headers;
             }
-
-        console.log(param_);
 
         switch(request_type)
         {
@@ -63,7 +60,6 @@ module.exports = function($http, $window, Upload)
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             }
-            console.log(data);
 
             // ____return the requestHTTP function with parameters____
             return requestHTTP(target, data, "text");
@@ -77,7 +73,6 @@ module.exports = function($http, $window, Upload)
 
             if (authentication != null)
                 data["authentication"] = authentication;
-            console.log(data);
 
             // ____return the requestHTTP function with parameters____
             return requestHTTP(target, data, "text");

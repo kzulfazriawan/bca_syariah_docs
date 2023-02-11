@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('status', ['new', 'progress', 'closed']);
             $table->foreignId('report_id');
             $table->foreignId('admin_id')->nullable();
+            $table->foreignId('ticket_id')->nullable();
             $table->timestamps();
         });
     }
@@ -34,8 +35,7 @@ return new class extends Migration
         Schema::table('tickets', function (Blueprint $table) {
             $table->dropForeign(['report_id']);
             $table->dropForeign(['admin_id']);
-            $table->dropColumn('report_id');
-            $table->dropColumn('admin_id');
+            $table->dropForeign(['ticket_id']);
         });        
         Schema::dropIfExists('tickets');
     }

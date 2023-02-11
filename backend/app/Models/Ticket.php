@@ -14,6 +14,7 @@ class Ticket extends Model
         'content',
         'status',
         'report_id',
-        'admin_id'
+        'admin_id',
+        'ticket_id'
     ];
 }

@@ -19,14 +19,26 @@ module.exports = function($scope, $timeout, $location, $window, Http){
         );
     }
 
-    $scope.ticket = function(){
-        Http.sendGet("http://localhost:8000/api/ticket", $window.localStorage.getItem("token")).then(
+    $scope.create = function(){
+        Http.sendAsJson("POST", "http://localhost:8000/api/ticket/create", {data: $scope.form, authentication: $window.localStorage.getItem("token")}).then(
             function success(response){
-                $scope.data.ticket = response.data;
+                console.log(response);
+                $scope.alert = {
+                    success: "Reply success"
+                };
+
+                setTimeout(
+                    function(){
+                        $window.location.href = "/#!/";
+                    }, 2000
+                )
             },
             function error(response){
-                $window.location.href = "/#!/login/";
+                $scope.alert = {
+                    error: response.data.message
+                };
             }
         );
     }
+
 }

@@ -24,3 +24,5 @@ Route::post("/auth/login", [AuthController::class, "login"]);
 Route::middleware("auth:sanctum")->get("/auth/profile", [AuthController::class, "profile"]);
 Route::middleware("auth:sanctum")->get("/ticket", [TicketController::class, "all"]);
 Route::middleware("auth:sanctum")->post("/ticket/create", [TicketController::class, "create"]);
+Route::middleware("auth:sanctum")->get("/ticket/{id}", [TicketController::class, "detail"]);
+Route::middleware("auth:sanctum")->post("/ticket/reply/{id}", [TicketController::class, "reply"]);
