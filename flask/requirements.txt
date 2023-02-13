@@ -1,0 +1,5 @@
+flask
+sqlalchemy
+alembic
+flask-jwt-extended
+mysqlclient

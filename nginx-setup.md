@@ -78,3 +78,11 @@
 28. Lakukan command restart nginx `sudo systemctl restart nginx.service` atau `sudo systemctl restart nginx`
 29. Lakukan command reload nginx `sudo systemctl reload nginx.service` atau `sudo systemctl reload nginx`
 30. Buka browser dan masukan alamat http://dns_isntance_aws/, apabila muncul koneksi tidak aman, tekan tombol ***Advance*** dan ***Proceed unsafe***
+
+## Instalasi Frontend dan Backend pada 
+
+### Bagian Frontend
+1. Pergi ke direktori ***/var/www/*** dengan command sebagai berikut `cd /var/www/`
+2. Ubah permission owner direktori html dengan perintah `sudo chown ubuntu:ubuntu -R html/`
+3. Masuk ke direktori ***html*** (`cd html/`) dan jalankan git clone repository bca_syariah_docs `git clone https://github.com/kzulfazriawan/bca_syariah_docs.git`
+4. 
